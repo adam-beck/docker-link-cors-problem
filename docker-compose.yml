@@ -1,0 +1,20 @@
+nodeapp:
+  image: node:latest
+  environment:
+    PORT: 80
+  ports: 
+    - "3000:80"
+  volumes:
+    - /home/adam/repos/quick_serve:/usr/src/app
+  working_dir: "/usr/src/app"
+  command: "node server.js"
+
+nginxserver:
+  image: nginx:latest
+  links:
+    - nodeapp
+  ports:
+    - "8080:80"
+  volumes:
+    - /home/adam/repos/quick_serve/public:/usr/share/nginx/html
+

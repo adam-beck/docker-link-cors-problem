@@ -5,7 +5,7 @@ nodeapp:
   ports: 
     - "3000:80"
   volumes:
-    - /home/adam/repos/quick_serve:/usr/src/app
+    - $PWD:/usr/src/app
   working_dir: "/usr/src/app"
   command: "node server.js"
 
@@ -16,5 +16,5 @@ nginxserver:
   ports:
     - "8080:80"
   volumes:
-    - /home/adam/repos/quick_serve/public:/usr/share/nginx/html
+    - $PWD/public:/usr/share/nginx/html
 

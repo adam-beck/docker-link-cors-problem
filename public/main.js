@@ -13,6 +13,7 @@
     // get a CORS error even though the app works with the above configuration and the server
     // has CORS enabled; doesn't even seem to be hitting the server
     request.open('GET', 'http://nodeapp/api', true);
+    // request.open('GET', 'http://localhost:3000/api', true);
 
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {

@@ -3,6 +3,11 @@ var app = express();
 const port = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
+  console.log('incoming request');
+  next();
+});
+
+app.use(function(req, res, next) {
   console.log('Using CORS for request');
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
@@ -16,4 +21,8 @@ app.get('/api', function(req, res) {
 
 app.listen(port, function() {
   console.log('Listening on port ' + port + '...');
+});
+
+process.on('SIGINT', function() {
+  process.exit();
 });
